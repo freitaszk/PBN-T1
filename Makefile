@@ -6,7 +6,7 @@ PROG = bagunceitor
 CC = gcc
 
 # Flags
-CFLAGS = -Iinclude -g # -Wall -g  # Todas as warnings, infos de debug
+CFLAGS = -Iinclude -Wall -g -O2
 LDFLAGS  =
 LIBS     =
 
@@ -47,6 +47,13 @@ $(TARGET): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# stb_image eh pesado, entao so recompila o imagem.o quando precisa
+main.o: imagem.h bagunca.h
+imagem.o: imagem.h
+chave.o: chave.h
+confusao.o: bagunca.h chave.h imagem.h
+difusao.o: bagunca.h chave.h imagem.h
+
 clean:
 ifeq ($(OS),Windows_NT)
 	del /Q $(subst /,\,$(OBJ)) $(TARGET) 2>nul || true
@@ -63,4 +70,3 @@ info:
 	@echo "Target:       $(TARGET)"
 
 .PHONY: all clean info
-

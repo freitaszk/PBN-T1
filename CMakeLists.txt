@@ -1,17 +1,9 @@
-cmake_minimum_required (VERSION 2.8.9)
+cmake_minimum_required (VERSION 3.5)
 
-project(bagunceitor)
+project(bagunceitor C)
 
-SET(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
+include_directories(include)
 
-set(INCLUDE_DIRS include)
+add_executable(bagunceitor main.c imagem.c chave.c confusao.c difusao.c)
 
-include_directories(${INCLUDE_DIRS})
-
-file(GLOB SOURCE_FILES main.c)
-file(GLOB INCLUDE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
-
-add_executable(bagunceitor ${SOURCE_FILES} ${INCLUDE_FILES})
-
-target_link_libraries(bagunceitor ${LIBRARIES} m)
-
+target_link_libraries(bagunceitor m)
