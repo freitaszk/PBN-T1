@@ -1,21 +1,21 @@
-# Bagunceitor — Confusão e Difusão em Imagens
+# Bagunceitor - Confusão e Difusão em Imagens
 
-Trabalho Prático 1 de Programação de Baixo Nível (PUCRS, 2026/2).
+Trabalho Prático 1 de Programação de Baixo Nível
 
 O programa bagunça uma imagem com uma etapa de **confusão** (troca o valor dos bytes) e uma de **difusão** (troca as posições dos pixels), as duas controladas por uma chave de texto. Depois desfaz tudo na ordem contrária e recupera a imagem **byte a byte**.
 
 ![comparação](docs/comparacao.png)
 
-## Compilar
+##Compilar
 
 ```
-mingw32-make      # Windows (MinGW)
-make              # Linux / macOS
+mingw32-make      #Windows (MinGW)
+make              #Linux / macOS
 ```
 
 No VS Code: `CTRL+SHIFT+B`.
 
-## Usar
+##Usar
 
 ```
 bagunceitor <imagem> <chave>
@@ -23,13 +23,13 @@ bagunceitor <imagem> <chave>
 Demo completa. Gera `so_confusao.png`, `so_difusao.png`, `baguncada.png` e `recuperada.png`, mostra os primeiros bytes na memória em cada etapa e compara a recuperada com a original byte a byte (também relendo `baguncada.png` do disco).
 
 ```
-bagunceitor -b <imagem> <chave> [saida.png]          # só bagunça
-bagunceitor -r <baguncada.png> <chave> [saida.png]   # só recupera
+bagunceitor -b <imagem> <chave> [saida.png]          #só bagunça
+bagunceitor -r <baguncada.png> <chave> [saida.png]   #só recupera
 ```
 
 A imagem bagunçada **precisa** ser salva em PNG. Um JPG perde informação e a recuperação deixa de ser exata.
 
-## Arquivos
+##Arquivos
 
 | Arquivo | O que tem |
 |---|---|
@@ -41,7 +41,7 @@ A imagem bagunçada **precisa** ser salva em PNG. Um JPG perde informação e a 
 | `bagunca.h` | Protótipos das quatro operações |
 | `include/` | Bibliotecas stb_image e stb_image_write (do código base) |
 
-## Regras
+##Regras
 
 **Confusão (por byte):** `c[i] = S[(v[i] + k[i]) mod 256] XOR c[i-1]`
 **Inversa:** `v[i] = (S⁻¹[c[i] XOR c[i-1]] − k[i]) mod 256`
