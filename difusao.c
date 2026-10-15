@@ -25,6 +25,28 @@ static unsigned int* gera_permutacao(const char* chave, size_t n) {
   return perm;
 }
 
+static void gira_canais(Img* img, const char* chave, int desfaz) {
+  Gerador g;
+  gerador_init(&g, chave, SAL_CANAIS);
+
+  Pixel* px = img->pixels;
+  Pixel* fim = px + total_pixels(img);
+
+  for (; px < fim; px++) {
+    int vezes = (int)sorteia(&g, 3);
+    // girar 2 pra um lado = girar 1 pro outro, entao o desfaz so troca o sentido
+    if (desfaz) vezes = (3 - vezes) % 3;
+
+    unsigned char* c = (unsigned char*)px;
+    while (vezes--) {
+      unsigned char tmp = c[0];
+      c[0] = c[1];
+      c[1] = c[2];
+      c[2] = tmp;
+    }
+  }
+}
+
 static void embaralha_pixels(Img* img, const char* chave, int desfaz) {
   size_t n = total_pixels(img);
   unsigned int* perm = gera_permutacao(chave, n);
@@ -49,9 +71,12 @@ static void embaralha_pixels(Img* img, const char* chave, int desfaz) {
 }
 
 void difunde(Img* img, const char* chave) {
+  gira_canais(img, chave, 0);
   embaralha_pixels(img, chave, 0);
 }
 
 void desdifunde(Img* img, const char* chave) {
+  // ordem contraria do difunde, nao inverte isso
   embaralha_pixels(img, chave, 1);
+  gira_canais(img, chave, 1);
 }
