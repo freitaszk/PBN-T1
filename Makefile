@@ -31,7 +31,7 @@ else
 endif
 
 # Fontes
-FONTES = main.c imagem.c chave.c
+FONTES = main.c imagem.c chave.c confusao.c
 OBJ = $(FONTES:.c=.o)
 
 # Target (com extensao se necessario)
