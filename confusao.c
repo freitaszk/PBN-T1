@@ -25,7 +25,7 @@ void confunde(Img* img, const char* chave) {
   unsigned char* fim = p + total_bytes(img);
   unsigned char anterior = (unsigned char)proximo(&g);
 
-  // c = sbox[v + k] ^ c_anterior
+  //c = sbox[v + k] ^ c_anterior
   for (; p < fim; p++) {
     unsigned char k = (unsigned char)proximo(&g);
     *p = sbox[(unsigned char)(*p + k)] ^ anterior;
@@ -37,7 +37,7 @@ void desconfunde(Img* img, const char* chave) {
   Gerador g;
   unsigned char sbox[256], inversa[256];
 
-  // tem que gerar tudo na MESMA ordem do confunde, senao os k nao batem
+  //tem que gerar tudo na **mesma ordem do confunde, senao os k's nao batem
   gerador_init(&g, chave, SAL_CONFUSAO);
   monta_sbox(&g, sbox, inversa);
 
@@ -45,7 +45,7 @@ void desconfunde(Img* img, const char* chave) {
   unsigned char* fim = p + total_bytes(img);
   unsigned char anterior = (unsigned char)proximo(&g);
 
-  // v = inversa[c ^ c_anterior] - k
+  //v = inversa[c ^ c_anterior] - k
   for (; p < fim; p++) {
     unsigned char k = (unsigned char)proximo(&g);
     unsigned char c = *p;

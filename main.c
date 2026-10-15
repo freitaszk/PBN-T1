@@ -27,7 +27,7 @@ static void bagunca(Img* img, const char* chave) {
 }
 
 static void recupera(Img* img, const char* chave) {
-  // D^-1 primeiro, depois C^-1
+  //D^-1 primeiro, depois C^-1
   desdifunde(img, chave);
   desconfunde(img, chave);
 }
@@ -38,7 +38,7 @@ static int demo(const char* arquivo, const char* chave) {
   load(arquivo, &original);
   mostra_bytes("original", &original, BYTES_MOSTRADOS);
 
-  // esses dois aqui sao so pra mostrar no video cada etapa separada
+  //esses dois aqui usamos pra mostrar no video cada etapa separada
   so_conf = copia(&original);
   confunde(&so_conf, chave);
   salva("so_confusao.png", &so_conf);

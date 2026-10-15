@@ -22,7 +22,7 @@ size_t total_bytes(const Img* pic) {
 }
 
 void load(const char* nome, Img* pic) {
-  // esse 3 no final obriga a vir sempre RGB, se vier png com alpha o struct Pixel quebra tudo
+  //esse 3 no final obriga a vir sempre RGB, se vier png com alpha o struct pixel quebra tudo
   pic->pixels = (Pixel*)stbi_load(nome, &pic->width, &pic->height, &pic->channels, 3);
   if (!pic->pixels) {
     printf("Erro de leitura: %s\n", stbi_failure_reason());

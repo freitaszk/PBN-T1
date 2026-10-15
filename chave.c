@@ -1,7 +1,7 @@
 #include "chave.h"
 
-// nao troca isso por rand(), o rand do windows e do linux dao numeros diferentes
-// e ai a imagem bagunçada num pc nao volta no outro
+//nao troca isso por rand(), o rand do windows e do linux dao numeros diferentes
+//e ai a imagem bagunçada num pc nao volta no outro :(
 
 void gerador_init(Gerador* g, const char* chave, uint32_t sal) {
   uint32_t h = 2166136261u ^ sal;
@@ -9,7 +9,7 @@ void gerador_init(Gerador* g, const char* chave, uint32_t sal) {
     h ^= *p;
     h *= 16777619u;
   }
-  // xorshift com estado 0 fica preso no 0 pra sempre
+  //xorshift com estado 0 fica preso no 0 pra sempre
   g->estado = h ? h : 0x9E3779B9u;
 }
 

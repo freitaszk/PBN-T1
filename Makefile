@@ -1,18 +1,18 @@
-# Makefile multiplataforma
+#Makefile multiplataforma
 
 PROG = bagunceitor
 
-# Compilador
+#Compilador
 CC = gcc
 
-# Flags
+#Flags
 CFLAGS = -Iinclude -Wall -g -O2
 LDFLAGS  =
 LIBS     =
 
-# Detecta SO and e ajusta extensao se necessario
+#Detecta SO and e ajusta extensao se necessario
 ifeq ($(OS),Windows_NT)
-    # Windows (MinGW)
+    #Windows (MinGW)
     EXEEXT  = .exe
     OSNAME  = Windows
     LIBS    += -lm
@@ -30,14 +30,14 @@ else
     endif
 endif
 
-# Fontes
+#Fontes
 FONTES = main.c imagem.c chave.c confusao.c difusao.c
 OBJ = $(FONTES:.c=.o)
 
-# Target (com extensao se necessario)
+#Target (com extensao se necessario)
 TARGET = $(PROG)$(EXEEXT)
 
-# Regras
+#Regras
 all: $(TARGET)
 	@echo "Build completado para $(OSNAME). Saida: $(TARGET)"
 
@@ -47,7 +47,7 @@ $(TARGET): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# stb_image eh pesado, entao so recompila o imagem.o quando precisa
+#stb_image eh pesado, entao so recompila o imagem.o quando precisa
 main.o: imagem.h bagunca.h
 imagem.o: imagem.h
 chave.o: chave.h
@@ -61,7 +61,7 @@ else
 	rm -f $(OBJ) $(TARGET)
 endif
 
-# Mostra infos do SO detectado
+#mostra infos do SO detectado
 info:
 	@echo "SO detectado: $(OSNAME)"
 	@echo "Compilador:   $(CC)"

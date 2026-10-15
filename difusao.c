@@ -34,7 +34,7 @@ static void gira_canais(Img* img, const char* chave, int desfaz) {
 
   for (; px < fim; px++) {
     int vezes = (int)sorteia(&g, 3);
-    // girar 2 pra um lado = girar 1 pro outro, entao o desfaz so troca o sentido
+    //girar 2 pra um lado = girar 1 pro outro, entao o desfaz so troca o sentido
     if (desfaz) vezes = (3 - vezes) % 3;
 
     unsigned char* c = (unsigned char*)px;
@@ -57,7 +57,7 @@ static void embaralha_pixels(Img* img, const char* chave, int desfaz) {
   }
 
   Pixel* origem = img->pixels;
-  // nao da pra fazer no lugar sem estragar, por isso o aux
+  //nao da pra fazer no lugar sem estragar, por isso o aux
   for (size_t i = 0; i < n; i++) {
     if (!desfaz)
       *(aux + *(perm + i)) = *(origem + i);
@@ -76,7 +76,7 @@ void difunde(Img* img, const char* chave) {
 }
 
 void desdifunde(Img* img, const char* chave) {
-  // ordem contraria do difunde, nao inverte isso
+  //ordem contraria do difunde, **nao** inverte isso
   embaralha_pixels(img, chave, 1);
   gira_canais(img, chave, 1);
 }
