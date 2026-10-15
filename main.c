@@ -15,10 +15,10 @@ int main(int argc, char* argv[]) {
   load(argv[1], &original);
   imagem = copia(&original);
 
-  confunde(&imagem, argv[2]);
-  salva("so_confusao.png", &imagem);
+  difunde(&imagem, argv[2]);
+  salva("so_difusao.png", &imagem);
 
-  desconfunde(&imagem, argv[2]);
+  desdifunde(&imagem, argv[2]);
   salva("recuperada.png", &imagem);
 
   printf("Diferencas: %lu\n", (unsigned long)compara(&original, &imagem));
