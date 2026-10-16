@@ -2,7 +2,7 @@
 
 Trabalho Prático 1 de Programação de Baixo Nível
 
-O programa bagunça uma imagem com uma etapa de **confusão** (troca o valor dos bytes) e uma de **difusão** (troca as posições dos pixels), as duas controladas por uma chave de texto. Depois desfaz tudo na ordem contrária e recupera a imagem **byte a byte**.
+O programa bagunça uma imagem com uma etapa de **confusão** (troca o valor dos bytes) e uma de **difusão** (troca as posições dos pixels), as duas controladas por uma chave de texto. Depois desfaz tudo na ordem contrária e recupera a imagem byte a byte.
 
 ![comparação](docs/comparacao.png)
 
@@ -13,7 +13,6 @@ mingw32-make      #Windows (MinGW)
 make              #Linux / macOS
 ```
 
-No VS Code: `CTRL+SHIFT+B`.
 
 ##Usar
 
